@@ -1,7 +1,10 @@
 
 import { useState } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addUser } from "./utils/userSlice";
 
+const dispatch = useDispatch();
 export const Login = () => {
   const [emailId, setemailId] = useState("sairajhere@gmail.com");
   const [password, setPassword] = useState("Sairaj@123");
@@ -17,6 +20,8 @@ export const Login = () => {
     withCredentials: true
     }
   );
+  console.log(res.data);
+  dispatch(addUser(res.data));
   }
   
     catch(err){

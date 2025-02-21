@@ -3,12 +3,11 @@ import {Navbar} from "./navbar";
 import {BrowserRouter, Routes, Route} from "react-router";
 import {Body} from "./body";
 import {Login} from "./login";
-
-//to record the commit 
-//previously did the commit using another account 
+import {Provider} from "react-redux";
 function App() {
   return( 
     <>
+    <Provider>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Body />} >
@@ -17,6 +16,8 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </Provider>
+    
     </>
   );
 
