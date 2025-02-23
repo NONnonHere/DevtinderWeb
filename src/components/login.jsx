@@ -1,33 +1,32 @@
-
 import { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { addUser } from "./utils/userSlice";
+import { addUser } from "../utils/userSlice";
+import { useNavigate } from "react-router-dom";
 
-const dispatch = useDispatch();
 export const Login = () => {
   const [emailId, setemailId] = useState("sairajhere@gmail.com");
   const [password, setPassword] = useState("Sairaj@123");
+  const dispatch = useDispatch(); 
+  const navigate = useNavigate();
 
   const handlelogin = async (e) => {
     e.preventDefault(); 
-    try{
-    const res = await axios.post("http://localhost:7777/login", {
-      emailId,
-      password
-    },
-    {
-    withCredentials: true
+    try {
+      const res = await axios.post("http://localhost:7777/login", {
+        emailId,
+        password
+      }, {
+        withCredentials: true
+      });
+      console.log("Login response:", res.data);
+      dispatch(addUser(res.data));
+      navigate("/feed");
+    } catch(err) {
+      console.log(err); 
     }
-  );
-  console.log(res.data);
-  dispatch(addUser(res.data));
-  }
-  
-    catch(err){
-      console.log(err);
-    }
-  }
+  } 
+
   return (
     <div className="bg-slate-800     flex h-screen ">
     <div className="w-full max-w-xs m-auto bg-slate-700	 rounded p-5">
@@ -37,7 +36,7 @@ export const Login = () => {
           src="https://img.icons8.com/fluent/344/year-of-tiger.png"
         />
       </header>
-      <form>
+      <form onSubmit={handlelogin}>
         <div>
           <label className="block mb-2 text-indigo-500" htmlFor="username">
             Email Address :  {emailId}
@@ -67,7 +66,6 @@ export const Login = () => {
             className="w-full base-100 hover:bg-pink-700 text-white font-bold py-2 px-4 mb-6 rounded"
             type="submit"
             value="Login"
-            onClick={handlelogin}
           />
         </div>
       </form>
