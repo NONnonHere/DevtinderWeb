@@ -4,7 +4,7 @@ import {Body} from "./components/body";
 import {Login} from "./components/login";
 import {Provider} from "react-redux";
 import appStore from "./utils/appStore";
-import {Feed} from "./components/feed";
+import Feed from "./components/feed";
 function App() {
   return( 
     <>

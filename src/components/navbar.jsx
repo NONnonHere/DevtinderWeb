@@ -1,13 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { removeUser } from "../utils/userSlice"; // Make sure this path matches your actual redux slice location
 import axios from "axios"; // Add this import
+
 
 export const Navbar = () => { 
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log("User in navbar:", user);
 
   const handleLogout = async () => {
     try {
@@ -29,7 +29,7 @@ export const Navbar = () => {
   return (
     <div className="navbar bg-slate-900">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <Link to="/" className="btn btn-ghost text-xl">daisyUI</Link>
         {user && <p className="text-white ml-4">Welcome, {user.firstName}</p>}
       </div>
       <div className="flex-none gap-2">
