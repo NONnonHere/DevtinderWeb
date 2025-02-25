@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { removeUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
+import UserCard from "./userCard";
 
 const Feed = () => {    
     const dispatch = useDispatch();
@@ -31,9 +32,9 @@ const Feed = () => {
     }, []);
 
     return (    
-        <div>
-            <h1>Feed</h1>
-        </div>
+        feed && (<div className="flex justify-center my-18">
+            <UserCard user={feed} />
+        </div>)
     );
 };
 

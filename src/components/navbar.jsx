@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { removeUser } from "../utils/userSlice"; // Make sure this path matches your actual redux slice location
 import axios from "axios"; // Add this import
+import profile from "./profile";
 
 
 export const Navbar = () => { 
@@ -55,7 +56,7 @@ export const Navbar = () => {
                 <span className="badge">New</span>
               </a>
             </li>
-            <li><a>Settings</a></li>
+            <li><a> </a></li>
             <li><a onClick={handleLogin}>Login</a></li>
             <li><a onClick={handleLogout}>Logout</a></li>
           </ul>
