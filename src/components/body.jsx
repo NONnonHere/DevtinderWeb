@@ -6,6 +6,8 @@ import { addUser } from "../utils/userSlice";
 import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Profile from './Profile';
+import { Routes, Route } from "react-router-dom";
 
 export const Body = () => {
   
@@ -38,9 +40,11 @@ export const Body = () => {
   return (
     <div>
       <Navbar />
+      {/* <Routes>
+        <Route path="/profile" element={<Profile />} />
+      </Routes> */}
       <Outlet />
       <Footer />
-
     </div>
   );
 };

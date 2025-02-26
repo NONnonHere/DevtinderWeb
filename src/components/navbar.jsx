@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { removeUser } from "../utils/userSlice"; // Make sure this path matches your actual redux slice location
 import axios from "axios"; // Add this import
-import profile from "./profile";
+
 
 
 export const Navbar = () => { 
@@ -24,6 +24,10 @@ export const Navbar = () => {
 
   const handleLogin = () => {
     navigate("/login");
+  };
+
+  const handleProfile = () => {
+    navigate("/profile");
   }
 
 
@@ -51,7 +55,7 @@ export const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
             <li>
-              <a className="justify-between">
+              <a className="justify-between" onClick={handleProfile}>
                 Profile
                 <span className="badge">New</span>
               </a>
